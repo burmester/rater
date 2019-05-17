@@ -47,6 +47,8 @@ function getSVG(grade) {
           <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.001 14c-2.332 0-4.145 1.636-5.093 2.797l.471.58c1.286-.819 2.732-1.308 4.622-1.308s3.336.489 4.622 1.308l.471-.58c-.948-1.161-2.761-2.797-5.093-2.797zm-3.501-6c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5-.672-1.5-1.5-1.5zm7 0c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5-.672-1.5-1.5-1.5z" />
         </svg>
       );
+    default:
+      return false
   }
 }
 
@@ -61,10 +63,12 @@ function App() {
   const [question, setQuestion] = useState("");
 
   if (showResult) {
+    const total = grades.reduce((total, grade) => total + grade.count, 0);
     return (
       <div className="App">
         <div className="Header">
           <input
+            placeholder="Välj din fråga"
             type="text"
             onChange={e => setQuestion(e.currentTarget.value)}
             value={question}
@@ -74,7 +78,11 @@ function App() {
           {grades.map(grade => {
             return (
               <div key={grade.grade} className={"Smile " + grade.grade}>
-                <div>{grade.count}</div>
+                <div>
+                    {grade.count} st
+                  <br />
+                    {total && Math.round(grade.count / total * 100 * 10) / 10}%
+                </div>
               </div>
             );
           })}
