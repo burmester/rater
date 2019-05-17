@@ -19,17 +19,49 @@ html,
   margin: 0 auto;
 }
 
-.footer {
+.Header input,
+.Header h1 {
+  font-size: 5vw;
+  color: white;
+  text-align: center;
+  font-weight: normal;
+  padding: 10px 20px;
+  margin: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.Header input {
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
+  transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
+  width: 50vw;
+}
+
+.Header input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.Footer,
+.Header {
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 0;
   width: 100%;
-  margin-bottom: 20px;
 }
 
-.footer button {
-  background: rgba(18, 18, 18, 0.9);
+.Header {
+  top: 10%;
+}
+
+.Footer {
+  bottom: 20px;
+}
+
+.Footer button {
+  background: transparent;
   color: white;
   border: 1px solid white;
   padding: 10px;
@@ -89,5 +121,9 @@ button:focus {
 }
 
 button:active {
-  background: rgba(255, 255, 255, 0.5) !important;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+button.Smile:active {
+  filter: opacity(50%);
 }
