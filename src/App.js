@@ -58,10 +58,18 @@ function App() {
     { grade: "A", count: 0 }
   ]);
   const [showResult, setShowResult] = useState(false);
+  const [question, setQuestion] = useState("");
 
   if (showResult) {
     return (
       <div className="App">
+        <div className="Header">
+          <input
+            type="text"
+            onChange={e => setQuestion(e.currentTarget.value)}
+            value={question}
+          />
+        </div>
         <div className="Flex">
           {grades.map(grade => {
             return (
@@ -71,7 +79,7 @@ function App() {
             );
           })}
         </div>
-        <div className="footer">
+        <div className="Footer">
           <button
             onClick={() => {
               setShowResult(false);
@@ -99,6 +107,11 @@ function App() {
 
   return (
     <div className="App">
+      {question && (
+        <div className="Header">
+          <h1>{question}</h1>
+        </div>
+      )}
       <div className="Flex">
         {grades.map(grade => {
           return (
@@ -116,7 +129,7 @@ function App() {
           );
         })}
       </div>
-      <div className="footer">
+      <div className="Footer">
         <button
           onClick={() => {
             setShowResult(true);
